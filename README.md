@@ -2,7 +2,7 @@
 
 Main technologies: React, Typescript, React Router, CSS modules
 
-This project was bootstrapped with [Vite]
+This project was bootstrapped with Vite
 
 ## Available Scripts
 
