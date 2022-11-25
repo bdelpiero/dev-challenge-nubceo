@@ -20,11 +20,13 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useLocalStorage<User | null>("user", null)
   const navigate = useNavigate()
 
+  // TODO: wrap with setTimeout to simulate loading state
   const login = async (user: User) => {
     setUser(user)
     navigate("/", { replace: true })
   }
 
+  // TODO: wrap with setTimeout to simulate loading state
   const logout = () => {
     setUser(null)
     navigate("/login", { replace: true })
