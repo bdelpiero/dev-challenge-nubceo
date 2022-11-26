@@ -4,7 +4,7 @@ import { useLocalStorage } from "./useLocalStorage"
 
 // TODO: move to types file
 interface User {
-  name: string
+  email: string
   password: string
 }
 
