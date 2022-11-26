@@ -1,6 +1,6 @@
 # React dev challenge for Nubceo
 
-Main technologies: React, Typescript, React Router, CSS modules
+Main technologies: React, Typescript, React Router, Chakra UI
 
 This project was bootstrapped with Vite
 
