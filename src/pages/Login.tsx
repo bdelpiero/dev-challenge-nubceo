@@ -11,16 +11,16 @@ import {
   Text,
   VStack,
   Spinner,
-} from "@chakra-ui/react"
-import { useState } from "react"
-import { inputHandler } from "../helpers/ui"
-import { useAuth } from "../hooks/useAuth"
+} from '@chakra-ui/react'
+import { useState } from 'react'
+import { inputHandler } from '../helpers/ui'
+import { useAuth } from '../hooks/useAuth'
 
 export function Login() {
   const { login, loading } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleShowClick = () => setShowPassword(!showPassword)
 
@@ -28,16 +28,16 @@ export function Login() {
 
   return (
     <Box
-      w={["full", "md"]}
+      w={['full', 'md']}
       p={[8, 10]}
-      mt={[20, "10vh"]}
+      mt={[20, '10vh']}
       mx="auto"
-      border={["none", "1px"]}
-      borderColor={["", "gray.300"]}
+      border={['none', '1px']}
+      borderColor={['', 'gray.300']}
       borderRadius={10}
     >
       <VStack spacing={4} align="flex-start" w="full">
-        <VStack spacing={1} align={["flex-start", "center"]} w="full">
+        <VStack spacing={1} align={['flex-start', 'center']} w="full">
           <Heading>Login</Heading>
           <Text>Enter your email and password to login</Text>
         </VStack>
@@ -51,22 +51,22 @@ export function Login() {
             <Input
               rounded="none"
               variant="filled"
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={inputHandler(setPassword)}
             />
             <InputRightElement width="4.5rem">
               <Button h="1.75rem" size="sm" onClick={handleShowClick}>
-                {showPassword ? "Hide" : "Show"}
+                {showPassword ? 'Hide' : 'Show'}
               </Button>
             </InputRightElement>
           </InputGroup>
         </FormControl>
-        <Button rounded="none" colorScheme={"red"} w="full" onClick={handleLogin}>
-          {loading ? <Spinner /> : "Login"}
+        <Button rounded="none" colorScheme={'red'} w="full" onClick={handleLogin}>
+          {loading ? <Spinner /> : 'Login'}
         </Button>
-        <Box w="full" textAlign={"center"}>
-          New to us?{" "}
+        <Box w="full" textAlign={'center'}>
+          New to us?{' '}
           <Link color="teal.500" href="/signup">
             Sign Up
           </Link>

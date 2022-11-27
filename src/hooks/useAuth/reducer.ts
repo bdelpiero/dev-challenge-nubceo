@@ -1,4 +1,4 @@
-import { Action, ACTION_TYPES, State } from "./types"
+import { Action, ACTION_TYPES, State } from './types'
 
 export const initialState: State = {
   user: null,

@@ -1,8 +1,8 @@
-import { Routes, Route } from "react-router-dom"
-import { ProtectedRoute } from "./router/ProtectedRoute"
-import { Bands } from "./pages/Bands"
-import { Login } from "./pages/Login"
-import { Band } from "./pages/Band"
+import { Routes, Route } from 'react-router-dom'
+import { ProtectedRoute } from './router/ProtectedRoute'
+import { Bands } from './pages/Bands'
+import { Login } from './pages/Login'
+import { Band } from './pages/Band'
 
 function App() {
   return (

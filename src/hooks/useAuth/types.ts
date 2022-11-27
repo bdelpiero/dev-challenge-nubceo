@@ -18,10 +18,10 @@ export interface State {
 }
 
 export enum ACTION_TYPES {
-  loading = "loading",
-  login = "login",
-  logout = "logout",
-  error = "error",
+  loading = 'loading',
+  login = 'login',
+  logout = 'logout',
+  error = 'error',
 }
 
 export type Action =
