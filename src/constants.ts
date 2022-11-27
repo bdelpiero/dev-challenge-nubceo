@@ -5,3 +5,5 @@ export const API_ENDPOINTS = {
   genre: 'genre',
   albums: 'albums',
 }
+
+export const TABLE_MAX_WIDTH = '800px'
