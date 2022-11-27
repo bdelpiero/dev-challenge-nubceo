@@ -13,3 +13,12 @@ export interface IBand {
   country: string
   members: { name: string }[]
 }
+
+export interface IGenre {
+  code: string
+  name: string
+}
+
+export interface IBandWithGenre extends IBand {
+  genre: string
+}

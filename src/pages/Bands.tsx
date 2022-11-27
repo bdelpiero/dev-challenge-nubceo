@@ -1,29 +1,24 @@
-import { Box, Flex, Link, Spinner } from "@chakra-ui/react"
-import { API_URL, API_ENDPOINTS } from "../constants"
-import { IBand } from "../types"
-import useFetch from "../hooks/useFetch"
+import { Spinner } from '@chakra-ui/react'
+import { API_URL, API_ENDPOINTS } from '../constants'
+import { useIsMobile } from '../hooks/useIsMobile'
+import { BandsTable } from '../components/BandsTable'
+import { BandsAccordions } from '../components/BandsAccordions'
+import { useBandsWithGenre } from '../hooks/useBandsWithGenres'
 
 export function Bands() {
-  const { data: bands, error } = useFetch<IBand[]>(`${API_URL}/${API_ENDPOINTS.bands}`)
-  const loading = !bands
+  const { bands, error } = useBandsWithGenre()
 
-  // show loader (table skeleton?)
-  if (loading) {
-    return <Spinner />
-  }
+  const isMobile = useIsMobile()
 
   if (error) {
     return <p>{`error fetching data: ${error}`}</p>
   }
 
-  // show bands
-  return (
-    <Flex flexDir={"column"}>
-      {bands?.map((band) => (
-        <Link key={band.id} href={`/band/${band.id}`}>
-          {band.name}
-        </Link>
-      ))}
-    </Flex>
-  )
+  // TODO: improve loader (table skeleton?)
+  if (!bands) {
+    return <Spinner />
+  }
+
+  // workaround: not very used to Chakra UI and was having trouble making the table responsive
+  return !isMobile ? <BandsTable bands={bands} /> : <BandsAccordions bands={bands} />
 }

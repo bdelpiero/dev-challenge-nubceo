@@ -12,6 +12,7 @@ import {
   VStack,
   Spinner,
 } from '@chakra-ui/react'
+import { Link as RouterLink } from 'react-router-dom'
 import { useState } from 'react'
 import { inputHandler } from '../helpers/ui'
 import { useAuth } from '../hooks/useAuth'
@@ -67,7 +68,7 @@ export function Login() {
         </Button>
         <Box w="full" textAlign={'center'}>
           New to us?{' '}
-          <Link color="teal.500" href="/signup">
+          <Link as={RouterLink} color="teal.500" to="/signup">
             Sign Up
           </Link>
         </Box>
