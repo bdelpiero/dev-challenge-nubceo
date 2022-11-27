@@ -10,13 +10,14 @@ import {
   Link,
   Text,
   VStack,
+  Spinner,
 } from "@chakra-ui/react"
 import { useState } from "react"
 import { inputHandler } from "../helpers/ui"
 import { useAuth } from "../hooks/useAuth"
 
 export function Login() {
-  const { login } = useAuth()
+  const { login, loading } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -62,7 +63,7 @@ export function Login() {
           </InputGroup>
         </FormControl>
         <Button rounded="none" colorScheme={"red"} w="full" onClick={handleLogin}>
-          Login
+          {loading ? <Spinner /> : "Login"}
         </Button>
         <Box w="full" textAlign={"center"}>
           New to us?{" "}
