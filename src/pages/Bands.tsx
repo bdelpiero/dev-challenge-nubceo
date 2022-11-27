@@ -1,15 +1,7 @@
 import { Box, Flex, Link, Spinner } from "@chakra-ui/react"
 import { API_URL, API_ENDPOINTS } from "../constants"
+import { IBand } from "../types"
 import useFetch from "../hooks/useFetch"
-
-export interface IBand {
-  id: number
-  name: string
-  genreCode: string
-  year: number
-  country: string
-  members: { name: string }[]
-}
 
 export function Bands() {
   const { data: bands, error } = useFetch<IBand[]>(`${API_URL}/${API_ENDPOINTS.bands}`)
