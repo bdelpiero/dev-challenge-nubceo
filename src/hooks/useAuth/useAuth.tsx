@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useReducer, useState } f
 import { useNavigate } from "react-router-dom"
 import { useLocalStorage } from "../useLocalStorage"
 import { initialState, loginReducer } from "./reducer"
-import { IAuthContext, User } from "./types"
+import { ACTION_TYPES, IAuthContext, User } from "./types"
 
 export const AuthContext = createContext<IAuthContext | undefined>(undefined)
 
@@ -22,19 +22,18 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   // TODO: add error case
   const login = (user: User) => {
-    dispatch({ type: "loading" })
+    dispatch({ type: ACTION_TYPES.loading })
     setTimeout(() => {
-      dispatch({ type: "login", payload: user })
+      dispatch({ type: ACTION_TYPES.login, payload: user })
       navigate("/", { replace: true })
     }, 1000)
   }
 
   // TODO: wrap with setTimeout to simulate loading state
   const logout = () => {
-    dispatch({ type: "loading" })
+    dispatch({ type: ACTION_TYPES.loading })
     setTimeout(() => {
-      console.log("logout")
-      dispatch({ type: "logout" })
+      dispatch({ type: ACTION_TYPES.logout })
       navigate("/login", { replace: true })
     }, 1000)
   }

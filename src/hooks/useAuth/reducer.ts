@@ -1,4 +1,4 @@
-import { Action, State } from "./types"
+import { Action, ACTION_TYPES, State } from "./types"
 
 export const initialState: State = {
   user: null,
@@ -8,13 +8,13 @@ export const initialState: State = {
 
 export const loginReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case "loading":
+    case ACTION_TYPES.loading:
       return { ...state, loading: true }
-    case "login":
+    case ACTION_TYPES.login:
       return { ...initialState, user: action.payload }
-    case "logout":
+    case ACTION_TYPES.logout:
       return { ...initialState }
-    case "error":
+    case ACTION_TYPES.error:
       return { ...initialState, error: action.payload }
     default:
       return state

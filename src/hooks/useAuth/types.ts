@@ -17,8 +17,15 @@ export interface State {
   error: Error | null
 }
 
+export enum ACTION_TYPES {
+  loading = "loading",
+  login = "login",
+  logout = "logout",
+  error = "error",
+}
+
 export type Action =
-  | { type: "loading" }
-  | { type: "login"; payload: User }
-  | { type: "logout" }
-  | { type: "error"; payload: Error }
+  | { type: ACTION_TYPES.loading }
+  | { type: ACTION_TYPES.login; payload: User }
+  | { type: ACTION_TYPES.logout }
+  | { type: ACTION_TYPES.error; payload: Error }
