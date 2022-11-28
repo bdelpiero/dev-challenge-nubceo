@@ -6,14 +6,23 @@ import {
   AccordionIcon,
   AccordionPanel,
   Link,
-  Text,
+  Spinner,
+  VStack,
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 import { BAND_DETAILS } from '../constants'
 import { IBandWithGenre } from '../types'
 import { Detail } from './Detail'
 
-export function BandsAccordions({ bands }: { bands: IBandWithGenre[] }) {
+export function BandsAccordions({ bands }: { bands?: IBandWithGenre[] }) {
+  if (!bands) {
+    return (
+      <VStack height={'30vh'} justifyContent="center">
+        <Spinner />
+      </VStack>
+    )
+  }
+
   return (
     <Accordion allowMultiple>
       {bands.map((band) => (

@@ -15,12 +15,6 @@ export function Bands() {
     return <p>{`error fetching data: ${error}`}</p>
   }
 
-  // TODO: improve loader (table skeleton?)
-  if (!bands) {
-    return <Spinner />
-  }
-
-  // workaround: not very used to Chakra UI and was having trouble making the table responsive
   return (
     <>
       <Stack
@@ -35,6 +29,7 @@ export function Bands() {
         </Heading>
         <BandsSortAndFilter genres={genres} />
       </Stack>
+      {/* workaround: not very used to Chakra UI and was having trouble making the table responsive */}
       {!isMobile ? <BandsTable bands={bands} /> : <BandsAccordions bands={bands} />}
     </>
   )

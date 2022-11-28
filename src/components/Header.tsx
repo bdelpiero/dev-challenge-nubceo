@@ -6,7 +6,10 @@ export function Header() {
 
   return (
     <Flex justifyContent={'flex-end'} padding={'20px'}>
-      <Button onClick={logout}> {loading ? <Spinner /> : 'Logout'} </Button>
+      <Button bg={'black'} color={'white'} onClick={logout}>
+        {' '}
+        {loading ? <Spinner /> : 'Logout'}{' '}
+      </Button>
     </Flex>
   )
 }

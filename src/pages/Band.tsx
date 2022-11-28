@@ -16,8 +16,6 @@ export function Band() {
   if (error) {
     return <p>{`Error fetching band details: ${error}`}</p>
   }
-  // TODO: loader
-  if (!band) return <Spinner />
 
   return (
     <VStack
@@ -31,17 +29,23 @@ export function Band() {
       alignItems={'flex-start'}
       padding={'50px'}
     >
-      <Heading as="h2" size="xl">
-        {band.name}
-      </Heading>
-      <Detail title={BAND_DETAILS.country} detail={band.country} />
-      <Detail title={BAND_DETAILS.genre} detail={band.genre} />
-      <Detail title={BAND_DETAILS.year} detail={band.year} />
-      <Detail
-        title={BAND_DETAILS.members}
-        detail={band.members.map((member) => member.name).join(', ')}
-      />
-      <AlbumsTable bandId={band.id} />
+      {!band ? (
+        <Spinner alignSelf={'center'} padding={'20px auto'} />
+      ) : (
+        <>
+          <Heading as="h2" size="xl">
+            {band.name}
+          </Heading>
+          <Detail title={BAND_DETAILS.country} detail={band.country} />
+          <Detail title={BAND_DETAILS.genre} detail={band.genre} />
+          <Detail title={BAND_DETAILS.year} detail={band.year} />
+          <Detail
+            title={BAND_DETAILS.members}
+            detail={band.members.map((member) => member.name).join(', ')}
+          />
+        </>
+      )}
+      <AlbumsTable bandId={band?.id} />
     </VStack>
   )
 }

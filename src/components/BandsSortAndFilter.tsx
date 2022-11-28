@@ -46,25 +46,35 @@ export function BandsSortAndFilter({ genres }: { genres?: IGenre[] }) {
     <HStack
       spacing={4}
       align={'center'}
-      alignSelf={['flex-end', 'center']}
+      alignSelf={['flex-start', 'center']}
       maxW={['250px', 'none']}
       mt={'0 !important'}
     >
       <Select
         placeholder="Sort By"
+        backgroundColor={'red.500'}
+        color={'white'}
+        fontWeight={'600'}
         onChange={handleSortBy}
         minW={['120px', '170px']}
         height={['30px', '40px']}
         defaultValue={defaultSortByOption}
       >
         {Object.keys(SORT_BY).map((option) => (
-          <option key={option} value={SORT_BY[option as keyof typeof SORT_BY]}>
+          <option
+            style={{ color: 'black' }}
+            key={option}
+            value={SORT_BY[option as keyof typeof SORT_BY]}
+          >
             {option}
           </option>
         ))}
       </Select>
       <Select
         placeholder="Filter By Genre"
+        backgroundColor={'red.500'}
+        color={'white'}
+        fontWeight={'600'}
         onChange={handleFilterBy}
         minW={['120px', '170px']}
         height={['30px', '40px']}
@@ -75,7 +85,7 @@ export function BandsSortAndFilter({ genres }: { genres?: IGenre[] }) {
         ) : (
           <>
             {genres.map((genre) => (
-              <option key={genre.code} value={genre.code}>
+              <option style={{ color: 'black' }} key={genre.code} value={genre.code}>
                 {genre.name}
               </option>
             ))}

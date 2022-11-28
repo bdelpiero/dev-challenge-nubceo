@@ -2,8 +2,9 @@ import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Spinner } from '@chakr
 import { API_URL, API_ENDPOINTS, CONTAINER_MAX_WIDTH, BAND_DETAILS } from '../constants'
 import useFetch from '../hooks/useFetch'
 import { IAlbum } from '../types'
+import { LoadingTable } from './LoadingTable'
 
-export function AlbumsTable({ bandId }: { bandId: number }) {
+export function AlbumsTable({ bandId }: { bandId?: number }) {
   const { data: albums, error } = useFetch<IAlbum[]>(
     `${API_URL}/${API_ENDPOINTS.albums}?bandId=${bandId}`
   )
@@ -12,15 +13,11 @@ export function AlbumsTable({ bandId }: { bandId: number }) {
     return <p>{`Error fetching albums: ${error}`}</p>
   }
 
-  if (!albums) {
-    return <Spinner />
-  }
-
   return (
     <Table
       alignSelf={'center'}
       size={'md'}
-      maxW={['90%', '600px']}
+      maxW={['none', '600px']}
       margin={'auto'}
       mt={'50px !important'}
       border={'1px'}
@@ -35,7 +32,9 @@ export function AlbumsTable({ bandId }: { bandId: number }) {
         </Tr>
       </Thead>
       <Tbody>
-        {!albums.length ? (
+        {!bandId || !albums ? (
+          <LoadingTable cols={2} />
+        ) : !albums.length ? (
           <Td>No albums found</Td>
         ) : (
           albums.map((album) => (
