@@ -10,6 +10,7 @@ export function BandsTable({ bands }: { bands: IBandWithGenre[] }) {
       justifyContent={'center'}
       alignItems={'center'}
       whiteSpace={'normal'}
+      mb={'50px'}
     >
       <Table
         size={'md'}
