@@ -1,5 +1,5 @@
 import { Heading, HStack, Spinner, Stack } from '@chakra-ui/react'
-import { TABLE_MAX_WIDTH } from '../constants'
+import { CONTAINER_MAX_WIDTH } from '../constants'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { BandsTable } from '../components/BandsTable'
 import { BandsAccordions } from '../components/BandsAccordions'
@@ -27,7 +27,7 @@ export function Bands() {
         flexDir={['column', 'row']}
         justifyContent={'space-between'}
         padding={'0 15px'}
-        maxW={TABLE_MAX_WIDTH}
+        maxW={CONTAINER_MAX_WIDTH}
         margin={'50px auto'}
       >
         <Heading as="h2" size={'lg'} mb={['20px', '0px']}>
