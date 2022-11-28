@@ -2,6 +2,7 @@ import { useSearchParams } from 'react-router-dom'
 import { SEARCH_PARAMS } from '../components/BandsSortAndFilter'
 import { API_URL, API_ENDPOINTS } from '../constants'
 import { IBand, IGenre, IBandWithGenre } from '../types'
+import { useAddGenresToBands } from './useAddGenresToBands'
 import useFetch from './useFetch'
 
 function buildAPIQueryString(sortParam: string | null, filterParam: string | null) {
@@ -22,14 +23,7 @@ export function useFetchBandsWithGenre() {
   const { data: bands, error: bandsError } = useFetch<IBand[]>(
     `${API_URL}/${API_ENDPOINTS.bands}${apiQueryString}`
   )
-  const { data: genres, error: genresError } = useFetch<IGenre[]>(
-    `${API_URL}/${API_ENDPOINTS.genre}`
-  )
-
-  const bandsWithGenre: IBandWithGenre[] | undefined = bands?.map((band) => ({
-    ...band,
-    genre: genres?.find((genre) => genre.code === band.genreCode)?.name ?? '',
-  }))
+  const { bandsWithGenre, genresError, genres } = useAddGenresToBands(bands)
 
   return { error: genresError ?? bandsError, bands: bandsWithGenre, genres }
 }

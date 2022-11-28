@@ -1,14 +1,16 @@
 import { Flex } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { API_ENDPOINTS, API_URL } from '../constants'
-import { IAlbum, IBand } from '../types'
+import { IAlbum } from '../types'
 import useFetch from '../hooks/useFetch'
+import { useFetchBandById } from '../hooks/useFetchBandById'
 
 export function Albums({ bandId }: { bandId: number }) {
   const { data: albums, error } = useFetch<IAlbum[]>(
     `${API_URL}/${API_ENDPOINTS.albums}?bandId=${bandId}`
   )
 
+  // TODO: add loader
   return (
     <Flex>
       {albums?.map((album) => (
@@ -21,11 +23,13 @@ export function Albums({ bandId }: { bandId: number }) {
 
 export function Band() {
   const { id } = useParams()
+  const { band, error } = useFetchBandById(id)
 
-  const { data: bands, error } = useFetch<IBand[]>(`${API_URL}/${API_ENDPOINTS.bands}/?id=${id}`)
-
-  const band = bands?.[0]
+  // TODO: loader
   if (!band) return null
+
+  console.log(band, 'band')
+
   return (
     <>
       <p>{band.name}</p>
