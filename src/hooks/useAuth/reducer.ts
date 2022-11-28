@@ -3,7 +3,7 @@ import { Action, ACTION_TYPES, State } from './types'
 export const initialState: State = {
   user: null,
   loading: false,
-  error: null,
+  loginError: null,
 }
 
 export const loginReducer = (state: State, action: Action): State => {
@@ -14,8 +14,8 @@ export const loginReducer = (state: State, action: Action): State => {
       return { ...initialState, user: action.payload }
     case ACTION_TYPES.logout:
       return { ...initialState }
-    case ACTION_TYPES.error:
-      return { ...initialState, error: action.payload }
+    case ACTION_TYPES.loginError:
+      return { ...initialState, loginError: action.payload }
     default:
       return state
   }

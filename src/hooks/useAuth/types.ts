@@ -6,7 +6,7 @@ export type User = {
 export interface IAuthContext {
   user: User | null
   loading: boolean
-  error: Error | null
+  loginError: Error | null
   login: (user: User) => void
   logout: () => void
 }
@@ -14,18 +14,18 @@ export interface IAuthContext {
 export interface State {
   user: User
   loading: boolean
-  error: Error | null
+  loginError: Error | null
 }
 
 export enum ACTION_TYPES {
   loading = 'loading',
   login = 'login',
   logout = 'logout',
-  error = 'error',
+  loginError = 'loginError',
 }
 
 export type Action =
   | { type: ACTION_TYPES.loading }
   | { type: ACTION_TYPES.login; payload: User }
   | { type: ACTION_TYPES.logout }
-  | { type: ACTION_TYPES.error; payload: Error }
+  | { type: ACTION_TYPES.loginError; payload: Error }
