@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { BAND_DETAILS, CONTAINER_MAX_WIDTH } from '../constants'
 import { IBandWithGenre } from '../types'
 
-export function BandsTable({ bands }: { bands: IBandWithGenre[] }) {
+export function BandsTable({ bands }: { bands?: IBandWithGenre[] }) {
   return (
     <TableContainer
       display={'flex'}
@@ -20,27 +20,31 @@ export function BandsTable({ bands }: { bands: IBandWithGenre[] }) {
         borderRadius={10}
         height={'fit-content'}
       >
-        <Thead>
+        <Thead backgroundColor={'black'}>
           <Tr>
-            <Th>{BAND_DETAILS.name}</Th>
-            <Th>{BAND_DETAILS.genre}</Th>
-            <Th isNumeric>{BAND_DETAILS.year}</Th>
-            <Th>{BAND_DETAILS.country}</Th>
+            <Th color={'white'}>{BAND_DETAILS.name}</Th>
+            <Th color={'white'}>{BAND_DETAILS.genre}</Th>
+            <Th color={'white'}>{BAND_DETAILS.year}</Th>
+            <Th color={'white'}>{BAND_DETAILS.country}</Th>
           </Tr>
         </Thead>
         <Tbody>
-          {bands.map((band) => (
-            <Tr key={band.id}>
-              <Td>
-                <Link as={RouterLink} to={`/band/${band.id}`} color="blue.300">
-                  {band.name}
-                </Link>
-              </Td>
-              <Td>{band.genre}</Td>
-              <Td isNumeric>{band.year}</Td>
-              <Td>{band.country}</Td>
-            </Tr>
-          ))}
+          {!bands?.length ? (
+            <Td>No bands found</Td>
+          ) : (
+            bands.map((band) => (
+              <Tr key={band.id}>
+                <Td>
+                  <Link as={RouterLink} to={`/band/${band.id}`} color="blue.300">
+                    {band.name}
+                  </Link>
+                </Td>
+                <Td>{band.genre}</Td>
+                <Td>{band.year}</Td>
+                <Td>{band.country}</Td>
+              </Tr>
+            ))
+          )}
         </Tbody>
       </Table>
     </TableContainer>

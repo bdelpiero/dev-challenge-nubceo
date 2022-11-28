@@ -63,7 +63,13 @@ export function Login() {
             </InputRightElement>
           </InputGroup>
         </FormControl>
-        <Button rounded="none" colorScheme={'red'} w="full" onClick={handleLogin}>
+        <Button
+          rounded="none"
+          colorScheme={'red'}
+          w="full"
+          onClick={handleLogin}
+          mt={'35px !important'}
+        >
           {loading ? <Spinner /> : 'Login'}
         </Button>
         <Box w="full" textAlign={'center'}>
