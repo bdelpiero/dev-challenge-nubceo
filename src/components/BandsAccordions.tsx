@@ -39,7 +39,7 @@ export function BandsAccordions({ bands }: { bands: IBandWithGenre[] }) {
             <Detail title={'year'} detail={band.year} />
             <Detail title={'genre'} detail={band.genre} />
             <Detail title={'country'} detail={band.country} />
-            <Link fontSize={'14px'} color="blue.300" as={RouterLink} to={`band/${band.id}`}>
+            <Link fontSize={'14px'} color="blue.300" as={RouterLink} to={`/band/${band.id}`}>
               View more details
             </Link>
           </AccordionPanel>
