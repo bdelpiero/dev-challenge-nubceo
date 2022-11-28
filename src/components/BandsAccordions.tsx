@@ -9,18 +9,9 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
+import { BAND_DETAILS } from '../constants'
 import { IBandWithGenre } from '../types'
-
-function Detail({ title, detail }: { title: string; detail: string | number }) {
-  return (
-    <Box>
-      <Text display={'inline-block'} fontWeight={'600'}>
-        {title}:
-      </Text>{' '}
-      {detail}
-    </Box>
-  )
-}
+import { Detail } from './Detail'
 
 export function BandsAccordions({ bands }: { bands: IBandWithGenre[] }) {
   return (
@@ -36,9 +27,9 @@ export function BandsAccordions({ bands }: { bands: IBandWithGenre[] }) {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <Detail title={'year'} detail={band.year} />
-            <Detail title={'genre'} detail={band.genre} />
-            <Detail title={'country'} detail={band.country} />
+            <Detail title={BAND_DETAILS.year} detail={band.year} />
+            <Detail title={BAND_DETAILS.genre} detail={band.genre} />
+            <Detail title={BAND_DETAILS.country} detail={band.country} />
             <Link fontSize={'14px'} color="blue.300" as={RouterLink} to={`/band/${band.id}`}>
               View more details
             </Link>

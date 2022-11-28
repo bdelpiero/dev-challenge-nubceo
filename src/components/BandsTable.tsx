@@ -1,6 +1,6 @@
 import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Link } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
-import { TABLE_MAX_WIDTH } from '../constants'
+import { BAND_DETAILS, CONTAINER_MAX_WIDTH } from '../constants'
 import { IBandWithGenre } from '../types'
 
 export function BandsTable({ bands }: { bands: IBandWithGenre[] }) {
@@ -14,7 +14,7 @@ export function BandsTable({ bands }: { bands: IBandWithGenre[] }) {
     >
       <Table
         size={'md'}
-        maxW={TABLE_MAX_WIDTH}
+        maxW={CONTAINER_MAX_WIDTH}
         border={'1px'}
         borderColor={'gray.300'}
         borderRadius={10}
@@ -22,10 +22,10 @@ export function BandsTable({ bands }: { bands: IBandWithGenre[] }) {
       >
         <Thead>
           <Tr>
-            <Th>Name</Th>
-            <Th>Genre</Th>
-            <Th isNumeric>Year</Th>
-            <Th>Country</Th>
+            <Th>{BAND_DETAILS.name}</Th>
+            <Th>{BAND_DETAILS.genre}</Th>
+            <Th isNumeric>{BAND_DETAILS.year}</Th>
+            <Th>{BAND_DETAILS.country}</Th>
           </Tr>
         </Thead>
         <Tbody>

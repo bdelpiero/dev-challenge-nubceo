@@ -6,4 +6,13 @@ export const API_ENDPOINTS = {
   albums: 'albums',
 }
 
-export const TABLE_MAX_WIDTH = '800px'
+export const CONTAINER_MAX_WIDTH = '800px'
+
+export enum BAND_DETAILS {
+  name = 'name',
+  country = 'country',
+  genre = 'genre',
+  year = 'year',
+  members = 'members',
+  albums = 'albums',
+}
