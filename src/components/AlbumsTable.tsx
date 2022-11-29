@@ -35,7 +35,9 @@ export function AlbumsTable({ bandId }: { bandId?: number }) {
         {!bandId || !albums ? (
           <LoadingTable cols={2} />
         ) : !albums.length ? (
-          <Td>No albums found</Td>
+          <Tr>
+            <Td>No albums found</Td>
+          </Tr>
         ) : (
           albums.map((album) => (
             // API error: should use album id as key but all ids are set to 1
