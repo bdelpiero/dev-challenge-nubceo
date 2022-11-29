@@ -3,12 +3,13 @@ import { ProtectedRoute } from './router/ProtectedRoute'
 import { Bands } from './pages/Bands'
 import { Login } from './pages/Login'
 import { Band } from './pages/Band'
+import { SignUp } from './pages/SignUp'
 
 function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      {/* <Route path="/signup" element={<SignUp />} /> */}
+      <Route path="/signup" element={<SignUp />} />
 
       <Route element={<ProtectedRoute />}>
         <Route path="/bands" element={<Bands />} />
