@@ -8,7 +8,6 @@ import { validateLogin, validateSignUp } from './validate'
 
 export const AuthContext = createContext<IAuthContext | undefined>(undefined)
 
-// use async behavior in the different auth actions to mock a server interaction
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   // we keep a separate state to handle the user in localStorage
   const [currentUser, setCurrentUser] = useLocalStorage<User>('user', null)
@@ -22,9 +21,14 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     setCurrentUser(state.user)
   }, [state.user])
 
-  const login = async (user: User) => {
+  // use async behavior to mock a server interaction
+  const mockRequest = async () => {
     dispatch({ type: ACTION_TYPES.loading })
     await delay(1000)
+  }
+
+  const login = async (user: User) => {
+    await mockRequest()
     try {
       validateLogin(users, user)
       dispatch({ type: ACTION_TYPES.login, payload: user })
@@ -35,19 +39,16 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }
 
   const logout = async () => {
-    dispatch({ type: ACTION_TYPES.loading })
-    await delay(1000)
+    await mockRequest()
     dispatch({ type: ACTION_TYPES.logout })
     navigate('/login', { replace: true })
   }
 
   const signUp = async (user: User) => {
-    if (!user) return
-    dispatch({ type: ACTION_TYPES.loading })
-    await delay(1000)
+    await mockRequest()
     try {
       validateSignUp(users, user)
-      setUsers((users) => ({ ...users, [user.email]: hash(user.password) }))
+      setUsers((users) => ({ ...users, [user!.email]: hash(user!.password) }))
       dispatch({ type: ACTION_TYPES.signUp, payload: user })
       navigate('/', { replace: true })
     } catch (e: any) {
