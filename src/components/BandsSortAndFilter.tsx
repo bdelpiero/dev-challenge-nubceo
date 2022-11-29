@@ -80,17 +80,11 @@ export function BandsSortAndFilter({ genres }: { genres?: IGenre[] }) {
         height={['30px', '40px']}
         defaultValue={defaultFilterByOption?.code}
       >
-        {!genres ? (
-          <Spinner />
-        ) : (
-          <>
-            {genres.map((genre) => (
-              <option style={{ color: 'black' }} key={genre.code} value={genre.code}>
-                {genre.name}
-              </option>
-            ))}
-          </>
-        )}
+        {genres?.map((genre) => (
+          <option style={{ color: 'black' }} key={genre.code} value={genre.code}>
+            {genre.name}
+          </option>
+        ))}
       </Select>
     </HStack>
   )
