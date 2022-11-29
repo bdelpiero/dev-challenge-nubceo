@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useReducer } from 'react
 import { useNavigate } from 'react-router-dom'
 import { delay, hash } from '../../helpers'
 import { useLocalStorage } from '../useLocalStorage'
-import { initialState, loginReducer } from './reducer'
+import { initialState, authReducer } from './reducer'
 import { ACTION_TYPES, IAuthContext, User, Users } from './types'
 import { validateLogin, validateSignUp } from './validate'
 
@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   // we keep a separate state to handle the user in localStorage
   const [currentUser, setCurrentUser] = useLocalStorage<User>('user', null)
   const [users, setUsers] = useLocalStorage<Users>('users', null)
-  const [state, dispatch] = useReducer(loginReducer, { ...initialState, user: currentUser })
+  const [state, dispatch] = useReducer(authReducer, { ...initialState, user: currentUser })
 
   const navigate = useNavigate()
 

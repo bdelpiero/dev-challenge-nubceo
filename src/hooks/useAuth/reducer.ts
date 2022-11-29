@@ -7,7 +7,7 @@ export const initialState: State = {
   signUpError: null,
 }
 
-export const loginReducer = (state: State, action: Action): State => {
+export const authReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case ACTION_TYPES.loading:
       return { ...state, loading: true }
