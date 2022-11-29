@@ -8,6 +8,7 @@ import { validateLogin, validateSignUp } from './validate'
 
 export const AuthContext = createContext<IAuthContext | undefined>(undefined)
 
+// use async behavior in the different auth actions to mock a server interaction
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   // we keep a separate state to handle the user in localStorage
   const [currentUser, setCurrentUser] = useLocalStorage<User>('user', null)
