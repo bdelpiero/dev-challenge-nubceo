@@ -1,13 +1,35 @@
 import { Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
 import { API_URL, API_ENDPOINTS } from '../constants'
-import useFetch from '../hooks/useFetch'
 import { IAlbum } from '../types'
 import { LoadingTable } from './LoadingTable'
 
 export function AlbumsTable({ bandId }: { bandId?: number }) {
-  const { data: albums, error } = useFetch<IAlbum[]>(
-    `${API_URL}/${API_ENDPOINTS.albums}?bandId=${bandId}`
-  )
+  const [albums, setAlbums] = useState<IAlbum[]>()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<Error | null>()
+
+  // workaround. was having trouble with `useFetch` and was having a hard time debugging it
+  useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal
+    setLoading(true)
+
+    fetch(`${API_URL}/${API_ENDPOINTS.albums}?bandId=${bandId}`, { signal })
+      .then((res) => res.json())
+      .then((data: IAlbum[]) => {
+        setLoading(false)
+        setAlbums(data)
+      })
+      .catch((e) => {
+        if (e.name === 'AbortError') console.log('request cancelled')
+        else setError(e)
+      })
+
+    return () => {
+      controller.abort()
+    }
+  }, [bandId])
 
   if (error) {
     return <p>{`Error fetching albums: ${error}`}</p>
@@ -32,9 +54,9 @@ export function AlbumsTable({ bandId }: { bandId?: number }) {
         </Tr>
       </Thead>
       <Tbody>
-        {!bandId || !albums ? (
+        {loading ? (
           <LoadingTable cols={2} />
-        ) : !albums.length ? (
+        ) : !albums?.length ? (
           <Tr>
             <Td>No albums found</Td>
           </Tr>
