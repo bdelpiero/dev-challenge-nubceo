@@ -1,23 +1,5 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Link,
-  VStack,
-  Spinner,
-  FormErrorMessage,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-} from '@chakra-ui/react'
+import { Box, Link } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
-import { useState } from 'react'
-import { inputHandler } from '../helpers/ui'
 import { useAuth } from '../hooks/useAuth'
 import { UserForm } from '../components/UserForm'
 

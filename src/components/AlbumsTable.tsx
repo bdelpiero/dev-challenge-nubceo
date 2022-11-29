@@ -1,5 +1,5 @@
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Spinner } from '@chakra-ui/react'
-import { API_URL, API_ENDPOINTS, CONTAINER_MAX_WIDTH, BAND_DETAILS } from '../constants'
+import { Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react'
+import { API_URL, API_ENDPOINTS } from '../constants'
 import useFetch from '../hooks/useFetch'
 import { IAlbum } from '../types'
 import { LoadingTable } from './LoadingTable'

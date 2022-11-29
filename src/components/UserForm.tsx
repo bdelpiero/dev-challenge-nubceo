@@ -7,7 +7,6 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Link,
   VStack,
   Spinner,
   FormErrorMessage,
@@ -15,9 +14,8 @@ import {
   AlertIcon,
   AlertTitle,
 } from '@chakra-ui/react'
-import { Link as RouterLink } from 'react-router-dom'
 import { useState } from 'react'
-import { inputHandler } from '../helpers/ui'
+import { inputHandler } from '../helpers'
 import { User } from '../hooks/useAuth/types'
 
 interface Props {

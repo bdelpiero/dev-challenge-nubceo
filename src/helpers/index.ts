@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react'
+
 // Basic hash function that returns a 32bit integer
 // source: https://stackoverflow.com/questions/6122571/simple-non-secure-hash-function-for-javascript
 export function hash(str: string) {
@@ -9,3 +11,8 @@ export function hash(str: string) {
   }
   return hash
 }
+
+export const inputHandler =
+  (callback: (value: string) => void) => (event: ChangeEvent<HTMLInputElement>) => {
+    callback(event.target.value)
+  }

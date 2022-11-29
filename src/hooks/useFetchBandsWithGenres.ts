@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
 import { SEARCH_PARAMS } from '../components/BandsSortAndFilter'
 import { API_URL, API_ENDPOINTS } from '../constants'
-import { IBand, IGenre, IBandWithGenre } from '../types'
+import { IBand } from '../types'
 import { useAddGenresToBands } from './useAddGenresToBands'
 import useFetch from './useFetch'
 

@@ -1,4 +1,4 @@
-import { HStack, Select, Spinner } from '@chakra-ui/react'
+import { HStack, Select } from '@chakra-ui/react'
 import { ChangeEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { IGenre } from '../types'

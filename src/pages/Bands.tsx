@@ -1,4 +1,4 @@
-import { Heading, HStack, Spinner, Stack } from '@chakra-ui/react'
+import { Heading, Stack } from '@chakra-ui/react'
 import { CONTAINER_MAX_WIDTH } from '../constants'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { BandsTable } from '../components/BandsTable'

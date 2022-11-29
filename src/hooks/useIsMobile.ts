@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 // source: https://stackoverflow.com/questions/59104425/typescript-debounce-function-not-calling-function-passed-as-parameter
 function debounce<Params extends any[]>(

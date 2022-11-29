@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useMemo, useReducer, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { hash } from '../../helpers/hash'
+import { hash } from '../../helpers'
 import { useLocalStorage } from '../useLocalStorage'
 import { initialState, loginReducer } from './reducer'
 import { ACTION_TYPES, IAuthContext, User } from './types'
