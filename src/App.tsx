@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<Navigate to="/bands" />} />
       </Route>
 
-      {/* add 404 route */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
 }

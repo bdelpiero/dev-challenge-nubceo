@@ -16,3 +16,5 @@ export const inputHandler =
   (callback: (value: string) => void) => (event: ChangeEvent<HTMLInputElement>) => {
     callback(event.target.value)
   }
+
+export const delay = (t: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, t))

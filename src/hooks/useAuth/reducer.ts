@@ -18,6 +18,8 @@ export const loginReducer = (state: State, action: Action): State => {
       return { ...initialState }
     case ACTION_TYPES.loginError:
       return { ...initialState, loginError: action.payload }
+    case ACTION_TYPES.singUpError:
+      return { ...initialState, signUpError: action.payload }
     default:
       return state
   }

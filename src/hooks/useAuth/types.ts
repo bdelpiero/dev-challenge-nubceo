@@ -3,14 +3,17 @@ export type User = {
   password: string
 } | null
 
+// users is a dictionary with emails as keys and 32bit integer hashed passwords as values
+export type Users = Record<string, number> | null
+
 export interface IAuthContext {
   user: User | null
   loading: boolean
   loginError: Error | null
   signUpError: Error | null
-  login: (user: User) => void
-  logout: () => void
-  signUp: (user: User) => void
+  login: (user: User) => Promise<void>
+  logout: () => Promise<void>
+  signUp: (user: User) => Promise<void>
 }
 
 export interface State {
