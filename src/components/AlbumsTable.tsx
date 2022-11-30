@@ -9,7 +9,7 @@ export function AlbumsTable({ bandId }: { bandId?: number }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>()
 
-  // workaround. was having trouble with `useFetch` and was having a hard time debugging it
+  // workaround. `useFetch` wasn't working properly and was having a hard time debugging it
   useEffect(() => {
     const controller = new AbortController()
     const signal = controller.signal
